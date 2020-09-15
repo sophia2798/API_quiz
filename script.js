@@ -137,7 +137,7 @@ function endGame() {
                 else {
                     storedScores = JSON.parse(storedScores);
                 }
-                console.log(storedScores)
+                // console.log(storedScores)
                 
                 // Set max length of storeScores to 5 to match with the leaderboard table dimensions
                 if (storedScores.length > 4){
@@ -147,15 +147,23 @@ function endGame() {
                 else {
                     storedScores.unshift(stats);
                 }
-                console.log(storedScores.length);
-                console.log(stats);
+                // console.log(storedScores.length);
+                // console.log(stats);
                 var stringifyScores = JSON.stringify(storedScores);
                 localStorage.setItem("stats", stringifyScores);
+                // console.log(localStorage.stats);
+                for (var j=0; j<JSON.parse(localStorage.stats).length; j++) {
+                    console.log(j);
+                    var ind = JSON.parse(localStorage.stats)[j];
+                    console.log(ind);
+                    document.querySelector("#u"+(j+1)).textContent = ind.username;
+                    document.querySelector("#s"+(j+1)).textContent = ind.score;
+                }
             }
         });
 
         // Display stats on leaderboard
-
+    
 
         form.addEventListener('submit', function() {
             event.preventDefault();
