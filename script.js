@@ -138,7 +138,16 @@ function endGame() {
                     storedScores = JSON.parse(storedScores);
                 }
                 console.log(storedScores)
-                storedScores.push(stats);
+                
+                // Set max length of storeScores to 5 to match with the leaderboard table dimensions
+                if (storedScores.length > 4){
+                    storedScores.pop();
+                    storedScores.unshift(stats);
+                }
+                else {
+                    storedScores.unshift(stats);
+                }
+                console.log(storedScores.length);
                 console.log(stats);
                 var stringifyScores = JSON.stringify(storedScores);
                 localStorage.setItem("stats", stringifyScores);
