@@ -1,5 +1,7 @@
 var quizContainer = document.querySelector("#quiz-container");
 var results = document.querySelector("#results");
+var container = document.querySelector(".container");
+var statsTable = document.querySelector("#leaderboard");
 
 var questions = [
     {
@@ -53,12 +55,24 @@ function countdown() {
 
         if (timeRemaining <= 0) {
             clearInterval(timerInt);
-            endGame();
+            timesUp();
         }
         timeRemaining--;
     }, 1000);
 
     renderQuestions(currentQIndex);
+}
+
+// Times up function
+function timesUp() {
+    // Condition if game ends due to running out of time
+    if (timeRemaining <= 0) {            
+        endHeader.textContent = "You ran out of time! Try again?"
+        container.append(endHeader);
+        var restart = document.createElement("button");
+        restart.innerHTML = "Try Again";
+        restart.onclick = initialCond();
+    }
 }
 
 // End game function
@@ -71,24 +85,75 @@ function endGame() {
     var endHeader = document.createElement("h2");
     document.querySelector("#title").textContent = "You Finished the Quiz!"
 
-    // Condition if game ends due to running out of time
-    if (timeRemaining <= 0) {
-        endHeader.textContent = "You ran out of time! Try again?"
-        document.body.append(endHeader);
-        var restart = document.createElement("button");
-        restart.innerHTML = "Try Again";
-        restart.onclick = initialCond();
-    }
-    // Condition if game ends from completing the quiz
-    else {
         clearInterval(timerInt);
+        statsTable.style.display = "block";
         endHeader.textContent = "Congratulations! You finished the quiz!";
-        document.body.append(endHeader);
+        container.append(endHeader);
         var finalScoreH3 = document.createElement("h3");
         finalScoreH3.textContent = "You got " + score + " question(s) correct and your final score is: " + timeRemaining + "!";
-        document.body.append(finalScoreH3);
-    }
+        container.append(finalScoreH3);
+
+        // Allow for user to enter their name
+
+        var namePrompt = document.createElement("label");
+        namePrompt.setAttribute("id", "name-prompt");
+        namePrompt.textContent = "Enter your name: ";
+        container.append(namePrompt);
+
+        var nameInput = document.createElement("input");
+        var form = document.createElement("form");
+        container.appendChild(form);
+        nameInput.setAttribute("placeholder", "Enter Your Name");
+        nameInput.setAttribute("type", "text");
+        nameInput.setAttribute("id", "name-input");
+        form.appendChild(nameInput);
+
+        submitName = document.createElement("button");
+        submitName.innerHTML = "Submit";
+        submitName.setAttribute("type", "submit");
+        submitName.setAttribute("id", "name-submit");
+        container.appendChild(submitName);
+
+    // Use local storage commands to store and save player data
+
+        submitName.addEventListener("click", function() {
+
+            // Define variable the name input value
+            var userName = nameInput.value;
+            // Define empty array for the key:value pairs of users and their score
+            nameInput.value = ""; 
+
+            if (!userName || userName === "") {
+                var warning = document.createElement("h4");
+                warning.textContent = "You must input a number!";
+                container.append(warning);
+            }
+            else {
+                var stats = {username: userName, score: timeRemaining};
+                var storedScores = localStorage.getItem("stats");
+                if (storedScores === null) {
+                    storedScores = [];
+                }
+                else {
+                    storedScores = JSON.parse(storedScores);
+                }
+                console.log(storedScores)
+                storedScores.push(stats);
+                console.log(stats);
+                var stringifyScores = JSON.stringify(storedScores);
+                localStorage.setItem("stats", stringifyScores);
+            }
+        });
+
+        // Display stats on leaderboard
+
+
+        form.addEventListener('submit', function() {
+            event.preventDefault();
+            submitName.click();
+        })  
 }
+
 
 // Display questions
 
@@ -143,6 +208,3 @@ quizContainer.addEventListener ("click", function(event) {
 
 // Start button will start the timer
 startBtn.addEventListener("click", countdown);
-
-// Use local storage commands to store and save player data
-
