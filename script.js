@@ -137,9 +137,16 @@ function endGame() {
         submitName.setAttribute("type", "submit");
         submitName.setAttribute("id", "name-submit");
         formContainer.appendChild(submitName);
+        
+        var playAgain = document.createElement("button");
+        playAgain.innerHTML = "Play Again";
+        playAgain.setAttribute("id","refresh");
+        document.body.appendChild(playAgain);
 
     // Use local storage commands to store and save player data
-    
+        playAgain.addEventListener("click", function() {
+            window.location.reload();
+        })
 
         var warning = document.createElement("h4");
         container.append(warning);
