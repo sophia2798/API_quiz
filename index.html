@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootcamp Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&family=Cedarville+Cursive&family=Italianno&family=Kaushan+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1 id="title">Welcome to the Quiz!</h1>
+        <h1 id="title">Lord of the Rings Trivia</h1>
     </header>
     <div class="container">
         <button id=start alt="Start Quiz Button">Start Quiz</button>
         <section id="quiz-container" style="display:none"></section>
-        <section id="results" style="display:none"></section>
+        <section id="results" style="display:none">Results...</section>
         <section id="timer"></section>
+        <section id="introduction">
+            <p id="intro-text">Welcome to the Lord of the Rings Trivia Game! You will have 15 seconds to answer each question. Click on an answer to select it as your answer. You will be alerted as to whether your answer was correct or incorrect. Each incorrect answer will result in a -10 second penalty. If you run out of time, you can always try again! Otherwise, your score will be equivalent to the time you have remaining. At the end, you may also enter you name so you can be entered into our leadboard!</p>
+        </section>
     </div>
     <div id="leaderboard" style="display:none">
         <table>

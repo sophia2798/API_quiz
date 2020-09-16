@@ -5,9 +5,9 @@ var statsTable = document.querySelector("#leaderboard");
 
 var questions = [
     {
-        question: "What is 1 + 1?",
-        answers: ["1","2","3"],
-        correct: "2"
+        question: "Which of the following is false about J.R.R. Tolkien?",
+        answers: ["Tolkien worked on the staff for the Oxford English Dictionary","Tolkien was a soldier in World War I","Tolkien spent 7 years creating the LoTR world and writing the trilogy","Tolkien was born in South Africa"],
+        correct: "Tolkien spent 7 years creating the LoTR world and writing the trilogy"
     },
     {
         question: "What is 2 + 5?",
@@ -43,13 +43,16 @@ var wrongAnswer = 10;
 var timerInt;
 var timer = document.querySelector("#timer");
 timer.textContent = "Time Remaining: " + timeRemaining + " seconds";
+timer.style.display = "none";
 
 // Timer functionality, counts down every 1000ms and at 0 seconds calls the end game function, when timer starts the start button will disappear and the quiz content will be shown
 
 function countdown() {
+    timer.style.display = "block";
     quizContainer.style.display = "block";
     results.style.display = "block";
     startBtn.style.display = "none";
+    document.querySelector("#introduction").style.display = "none";
     timerInt = setInterval(function() {
         timer.textContent = "Time Remaining: " + timeRemaining + " seconds";
 
@@ -152,6 +155,8 @@ function endGame() {
                 var stringifyScores = JSON.stringify(storedScores);
                 localStorage.setItem("stats", stringifyScores);
                 // console.log(localStorage.stats);
+                
+                // Display stats on leaderboard
                 for (var j=0; j<JSON.parse(localStorage.stats).length; j++) {
                     console.log(j);
                     var ind = JSON.parse(localStorage.stats)[j];
@@ -162,13 +167,12 @@ function endGame() {
             }
         });
 
-        // Display stats on leaderboard
-    
-
+        // Get form to submit with enter button as well
         form.addEventListener('submit', function() {
             event.preventDefault();
             submitName.click();
-        })  
+        });
+
 }
 
 
