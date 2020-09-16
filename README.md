@@ -4,7 +4,7 @@
 
 This repository is comprised of an HTML, JavaScript, and two CSS files. One CSS file is a reset file to reduce browser inconsistencies and the other is the style sheet for the page. 
 
-The page consists of a trivia game. The initial screen shows a title, brief instructions, and a start button. The user has 15 seconds for each question. Once the start button is pressed, the first question and its multiple answer choices are shown on the screen. The user can select their answer by clicking on the desired answer button. Their correct/incorrect result will be displayed on the page and the next question/answers will appear. Each incorrect answer deducts 10 seconds from the countdown timer.
+The page consists of a trivia game. The initial screen shows a title, brief instructions, and a start button. The user has 15 seconds for each question. Once the start button is pressed, the first question and its multiple answer choices are shown on the screen. The user can select their answer by clicking on the desired answer button. Their correct/incorrect result will be displayed on the page and the next question/answers will appear. Each incorrect answer deducts 10 seconds from the countdown timer. The user's final score is equivalent to the time they have remaining.
 
 This page is slightly responsive to smaller window sizes, but could use additional styling to provide better responsiveness.
 
@@ -12,7 +12,7 @@ The trivia can end in two ways - (1) the user runs out of time or (2) the user c
 
 This project focuses on the use DOM manipulation, Web API, localStorage, dynamic HTML editing, functions, conditional statements, click events, and scope. These concepts were needed to create the functionalities that started the trivia, checked answers, stored users' information, displayed information, and iterated through the questions. 
 
-    DEMO VIDEO
+![Demo Video](./assets/demo.gif)
 
 ## Table of Contents
 
@@ -45,19 +45,19 @@ This project can also be used as a template to learn more about the storage and 
 
 - An introductory page with instructions and a start button.
 
-    INSERT SCREENSHOT
+![alt-text](./assets/start.png "Intro Page")
 
 - A series of questions with a multiple choice answer. Each answer is a button that can be clicked, which will prompt a result and the next question to appear.
 
-    INSERT SCREENSHOT
+![alt-text](./assets/questions.png "Question Layout")
 
 - A screen if time runs out and an option to play the game again.
 
-    INSERT SCREENSHOT
+![alt-text](./assets/timesup.png "Times Up Page")
 
 - A ending screen that displays the final score. There is also a form for the user to input their name and submit it. This saves it to local storage and displays it on the leaderboard with the other recent users' names and score.
 
-    INSERT SCREENSHOT
+![alt-text](./assets/end.png "Final Page")
 
 ## Authors
 
