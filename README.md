@@ -8,7 +8,7 @@ The page consists of a trivia game. The initial screen shows a title, brief inst
 
 This page is slightly responsive to smaller window sizes, but could use additional styling to provide better responsiveness.
 
-The trivia can end in two ways - (1) the user runs out of time or (2) the user completes all the questions. If the user runs out of time, they may choose to play the game again. If the user completes all the questions, the end screen appears which displays the user's score and allows for the user to input their name into the leaderboard. 
+The trivia can end in two ways - (1) the user runs out of time or (2) the user completes all the questions. If the user runs out of time, they may choose to play the game again. If the user completes all the questions, the end screen appears which displays the user's score and allows for the user to input their name into the leaderboard. The leaderboard does NOT show the highest scores. It shows the most RECENT scores. 
 
 This project focuses on the use DOM manipulation, Web API, localStorage, dynamic HTML editing, functions, conditional statements, click events, and scope. These concepts were needed to create the functionalities that started the trivia, checked answers, stored users' information, displayed information, and iterated through the questions. 
 
