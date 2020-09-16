@@ -84,12 +84,16 @@ function countdown() {
 // Times up function
 function timesUp() {
     // Condition if game ends due to running out of time
-    if (timeRemaining <= 0) {            
-        endHeader.textContent = "You ran out of time! Try again?"
-        container.append(endHeader);
+    if (timeRemaining <= 0) { 
+        timeRemaining.style.display = "none";     
+        var timeHeader = document.createElement("h2");      
+        timeHeader.textContent = "You ran out of time! Try again?"
+        container.append(timeHeader);
         var restart = document.createElement("button");
+        restart.setAttribute("id","refresh");
         restart.innerHTML = "Try Again";
-        restart.onclick = initialCond();
+        container.append(restart);
+        restart.onclick = window.location.reload();
     }
 }
 
