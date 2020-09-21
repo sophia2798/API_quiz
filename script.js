@@ -171,10 +171,7 @@ function endGame() {
     };
 
         // Display Scores
-        if (storedScores === null) {
-            return
-        }
-        else {
+        if (localStorage.stats !== undefined) {
             displayScores();
         }
 
